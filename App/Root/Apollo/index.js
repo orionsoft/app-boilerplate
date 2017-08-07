@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo'
-import { getLoginToken, onTokenChange } from 'meteor-apollo-accounts'
+import {ApolloClient, ApolloProvider, createNetworkInterface} from 'react-apollo'
+import {getLoginToken, onTokenChange} from 'meteor-apollo-accounts'
 import './accounts'
 import Loading from './Loading'
 import NetworkError from './NetworkError'
 import ApolloError from './ApolloError'
 
 const uri = 'http://localhost:3000/graphql'
-const networkInterface = createNetworkInterface({ uri })
+const networkInterface = createNetworkInterface({uri})
 
 networkInterface.use([
   {
