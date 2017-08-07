@@ -1,6 +1,7 @@
 import React from 'react'
-import {View, Text, StatusBar} from 'react-native'
+import {View, StatusBar, ScrollView} from 'react-native'
 import styles from './styles.js'
+import Main from './Main'
 
 export default class Auth extends React.Component {
   static propTypes = {}
@@ -8,8 +9,10 @@ export default class Auth extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor="blue" barStyle="light-content" />
-        <Text hola="asdfasd">Auth</Text>
+        <StatusBar backgroundColor="#0069ff" barStyle="dark-content" />
+        <ScrollView style={styles.scrollView}>
+          <Main />
+        </ScrollView>
       </View>
     )
   }

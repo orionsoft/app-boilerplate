@@ -1897,9 +1897,9 @@ escodegen@^1.6.1:
   optionalDependencies:
     source-map "~0.2.0"
 
-eslint-config-orionsoft@^1.0.12:
-  version "1.0.12"
-  resolved "https://registry.npmjs.org/eslint-config-orionsoft/-/eslint-config-orionsoft-1.0.12.tgz#365f610570f5bd2fb89d6ed33e704b8cbd43649d"
+eslint-config-orionsoft@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.npmjs.org/eslint-config-orionsoft/-/eslint-config-orionsoft-1.0.13.tgz#18757f5bb40e2b7e8a5a75dae240d814421e96c8"
   dependencies:
     babel-eslint "^7.2.3"
     eslint ">=3.19.0"
