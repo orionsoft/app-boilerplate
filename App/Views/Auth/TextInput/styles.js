@@ -1,7 +1,11 @@
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    marginBottom: 20
+  },
   label: {
     color: '#999',
     letterSpacing: 2,
