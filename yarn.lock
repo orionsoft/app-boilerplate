@@ -4679,6 +4679,12 @@ react-native-svg@5.3.0:
     color "^0.11.1"
     lodash "^4.16.6"
 
+react-native-swiper@^1.5.10:
+  version "1.5.10"
+  resolved "https://registry.npmjs.org/react-native-swiper/-/react-native-swiper-1.5.10.tgz#20569b85623bdd3f667a376999b3844007d11dc1"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-vector-icons@4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-4.1.1.tgz#9ac75bde77d9243346668c51dca7756775428087"

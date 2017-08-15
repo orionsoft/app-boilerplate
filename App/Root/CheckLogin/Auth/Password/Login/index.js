@@ -2,7 +2,7 @@ import React from 'react'
 import {View, Text} from 'react-native'
 import styles from './styles.js'
 import {Form, Field} from 'simple-react-form'
-import TextInput from '../TextInput'
+import TextInput from '../../TextInput'
 import autobind from 'autobind-decorator'
 import {loginWithPassword} from 'meteor-apollo-accounts'
 import {withApollo} from 'react-apollo'
@@ -17,9 +17,7 @@ export default class Login extends React.Component {
     open: PropTypes.func
   }
 
-  state = {
-    email: 'nicolas@orionsoft.io'
-  }
+  state = {}
 
   @autobind
   focusPassword() {
@@ -76,7 +74,8 @@ export default class Login extends React.Component {
           onPress={this.submit}
           title="Sign in"
         />
-        <LightButton onPress={() => this.props.open('register')} title="Create an account" />
+        <LightButton onPress={() => this.props.open(2)} title="Create an account" />
+        <LightButton onPress={() => this.props.open(0)} title="Forgot password" />
       </View>
     )
   }

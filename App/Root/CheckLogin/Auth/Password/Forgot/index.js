@@ -2,18 +2,14 @@ import React from 'react'
 import {View, Text} from 'react-native'
 import styles from './styles.js'
 
-export default class Register extends React.Component {
+export default class Forgot extends React.Component {
+  static propTypes = {}
 
-  static propTypes = {
-
-  }
-
-  render () {
+  render() {
     return (
       <View style={styles.container}>
-        <Text>Register</Text>
+        <Text style={styles.title}>Forgot password</Text>
       </View>
     )
   }
-
 }

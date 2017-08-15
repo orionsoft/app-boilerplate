@@ -3,8 +3,7 @@ import {View, StatusBar, Dimensions} from 'react-native'
 import styles from './styles.js'
 import Main from './Main'
 import Modal from 'react-native-modalbox'
-import Login from './Login'
-import Register from './Register'
+import Password from './Password'
 import autobind from 'autobind-decorator'
 
 export default class Auth extends React.Component {
@@ -34,22 +33,14 @@ export default class Auth extends React.Component {
         <StatusBar backgroundColor="#0069ff" barStyle="dark-content" />
         <Main open={this.open} />
         <Modal
+          swipeToClose={false}
           keyboardTopOffset={0}
           style={this.getModalStyle()}
-          isOpen={this.state.opened === 'login'}
+          isOpen={this.state.opened === 'password'}
           onClosed={() => this.setState({opened: null})}
           position="bottom"
         >
-          <Login open={this.open} />
-        </Modal>
-        <Modal
-          keyboardTopOffset={0}
-          style={this.getModalStyle()}
-          isOpen={this.state.opened === 'register'}
-          onClosed={() => this.setState({opened: null})}
-          position="bottom"
-        >
-          <Register open={this.open} />
+          <Password open={this.open} />
         </Modal>
       </View>
     )

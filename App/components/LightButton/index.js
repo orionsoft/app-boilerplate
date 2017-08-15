@@ -39,7 +39,7 @@ export default class AppButton extends React.Component {
 
   getContainerStyles() {
     return {
-      height: 50
+      height: 40
     }
   }
 
@@ -59,7 +59,7 @@ export default class AppButton extends React.Component {
     if (!this.props.loading) return
     const style = {
       padding: 15,
-      height: 50
+      height: 40
     }
     return (
       <View style={style}>

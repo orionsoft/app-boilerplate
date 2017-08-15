@@ -21,7 +21,7 @@ export default class Main extends React.Component {
             <Button backgroundColor="#0069ff" title="Facebook" />
             <Button backgroundColor="red" title="Google" />
             <Button
-              onPress={() => this.props.open('login')}
+              onPress={() => this.props.open('password')}
               backgroundColor="#ffffff"
               textColor="#000000"
               title="Password"
