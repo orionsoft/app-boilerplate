@@ -2,9 +2,12 @@ import {StyleSheet} from 'react-native'
 import texts from 'App/styles/texts'
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    padding: 20
+  },
   title: {
     ...texts.title,
-    color: '#ffffff'
+    marginBottom: 40
   }
 })

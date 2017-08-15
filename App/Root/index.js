@@ -1,6 +1,7 @@
 import React from 'react'
 import Apollo from './Apollo'
 import PropTypes from 'prop-types'
+import CheckLogin from './CheckLogin'
 
 export default class Root extends React.Component {
   static propTypes = {
@@ -10,7 +11,9 @@ export default class Root extends React.Component {
   render() {
     return (
       <Apollo>
-        {this.props.children}
+        <CheckLogin>
+          {this.props.children}
+        </CheckLogin>
       </Apollo>
     )
   }

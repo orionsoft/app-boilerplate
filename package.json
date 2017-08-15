@@ -26,6 +26,7 @@
     "react-apollo": "^1.4.14",
     "react-apollo-decorators": "^1.4.0",
     "react-native": "^0.46.1",
+    "react-native-modalbox": "^1.4.2",
     "simple-react-form": "^2.0.0"
   }
 }

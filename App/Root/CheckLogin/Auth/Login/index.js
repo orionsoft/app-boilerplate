@@ -1,13 +1,13 @@
 import React from 'react'
-import {View} from 'react-native'
+import {View, Button as RNButton, Text} from 'react-native'
 import styles from './styles.js'
 import {Form, Field} from 'simple-react-form'
 import TextInput from '../TextInput'
-import Logo from '../Logo'
 import autobind from 'autobind-decorator'
 import {loginWithPassword} from 'meteor-apollo-accounts'
 import {withApollo} from 'react-apollo'
 import PropTypes from 'prop-types'
+import Button from 'App/components/Button'
 
 @withApollo
 export default class Login extends React.Component {
@@ -26,6 +26,7 @@ export default class Login extends React.Component {
 
   @autobind
   async submit() {
+    return
     this.setState({loading: true})
     try {
       const {email, password} = this.state
@@ -39,7 +40,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Logo />
+        <Text style={styles.title}>Login</Text>
         <Form state={this.state} onChange={changes => this.setState(changes)}>
           <View>
             <Field
@@ -63,6 +64,8 @@ export default class Login extends React.Component {
             />
           </View>
         </Form>
+        <Button onPress={this.submit} title="Sign in" />
+        <RNButton onPress={this.submit} title="Create an account" />
       </View>
     )
   }

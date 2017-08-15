@@ -8,7 +8,7 @@ export default class Logo extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image resizeMode="contain" style={styles.image} source={require('./black.png')} />
+        <Image resizeMode="contain" style={styles.image} source={require('./weeshing-black.png')} />
       </View>
     )
   }
