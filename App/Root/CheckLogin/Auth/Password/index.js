@@ -14,13 +14,11 @@ export default class Password extends React.Component {
 
   @autobind
   open(index) {
-    console.log('scroll top ', index - this.state.index)
     this.refs.swiper.scrollBy(index - this.state.index)
     this.setState({index})
   }
 
   render() {
-    console.log(this.state.index)
     return (
       <View style={styles.container}>
         <Swiper
