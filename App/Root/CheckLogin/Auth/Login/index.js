@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Button as RNButton, Text} from 'react-native'
+import {View, Text} from 'react-native'
 import styles from './styles.js'
 import {Form, Field} from 'simple-react-form'
 import TextInput from '../TextInput'
@@ -8,11 +8,13 @@ import {loginWithPassword} from 'meteor-apollo-accounts'
 import {withApollo} from 'react-apollo'
 import PropTypes from 'prop-types'
 import Button from 'App/components/Button'
+import LightButton from 'App/components/LightButton'
 
 @withApollo
 export default class Login extends React.Component {
   static propTypes = {
-    client: PropTypes.object
+    client: PropTypes.object,
+    open: PropTypes.func
   }
 
   state = {
@@ -24,13 +26,17 @@ export default class Login extends React.Component {
     this.refs.password.refs.input.focus()
   }
 
+  isFormReady() {
+    return this.state.email && this.state.password
+  }
+
   @autobind
   async submit() {
-    return
     this.setState({loading: true})
     try {
       const {email, password} = this.state
       await loginWithPassword({email, password}, this.props.client)
+      this.props.open(null)
     } catch (error) {
       console.log('Error:', error)
     }
@@ -64,8 +70,13 @@ export default class Login extends React.Component {
             />
           </View>
         </Form>
-        <Button onPress={this.submit} title="Sign in" />
-        <RNButton onPress={this.submit} title="Create an account" />
+        <Button
+          disabled={!this.isFormReady()}
+          loading={this.state.loading}
+          onPress={this.submit}
+          title="Sign in"
+        />
+        <LightButton onPress={() => this.props.open('register')} title="Create an account" />
       </View>
     )
   }

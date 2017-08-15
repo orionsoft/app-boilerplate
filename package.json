@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "expo": "^19.0.0",
-    "meteor-apollo-accounts": "^2.0.1",
+    "meteor-apollo-accounts": "^2.0.2",
     "react": "16.0.0-alpha.12",
     "react-apollo": "^1.4.14",
     "react-apollo-decorators": "^1.4.0",

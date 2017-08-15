@@ -4,6 +4,8 @@ import styles from './styles.js'
 import Main from './Main'
 import Modal from 'react-native-modalbox'
 import Login from './Login'
+import Register from './Register'
+import autobind from 'autobind-decorator'
 
 export default class Auth extends React.Component {
   static propTypes = {}
@@ -21,11 +23,16 @@ export default class Auth extends React.Component {
     }
   }
 
+  @autobind
+  open(opened) {
+    this.setState({opened})
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#0069ff" barStyle="dark-content" />
-        <Main open={opened => this.setState({opened})} />
+        <Main open={this.open} />
         <Modal
           keyboardTopOffset={0}
           style={this.getModalStyle()}
@@ -33,7 +40,16 @@ export default class Auth extends React.Component {
           onClosed={() => this.setState({opened: null})}
           position="bottom"
         >
-          <Login />
+          <Login open={this.open} />
+        </Modal>
+        <Modal
+          keyboardTopOffset={0}
+          style={this.getModalStyle()}
+          isOpen={this.state.opened === 'register'}
+          onClosed={() => this.setState({opened: null})}
+          position="bottom"
+        >
+          <Register open={this.open} />
         </Modal>
       </View>
     )

@@ -1,14 +1,17 @@
 import React from 'react'
-import {View, TouchableWithoutFeedback, Text, Animated} from 'react-native'
+import {View, TouchableWithoutFeedback, Text, Animated, ActivityIndicator} from 'react-native'
 import styles from './styles.js'
 import PropTypes from 'prop-types'
+import autobind from 'autobind-decorator'
 
 export default class AppButton extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    onPress: PropTypes.func
+    onPress: PropTypes.func,
+    disabled: PropTypes.bool,
+    loading: PropTypes.bool
   }
 
   static defaultProps = {
@@ -20,6 +23,7 @@ export default class AppButton extends React.Component {
 
   componentWillMount() {
     this.shadowRadius = new Animated.Value(10)
+    this.shadowOpacity = new Animated.Value(this.props.loading || this.props.disabled ? 0 : 0.2)
     this.marginTop = new Animated.Value(10)
     this.marginBottom = new Animated.Value(10)
   }
@@ -38,42 +42,103 @@ export default class AppButton extends React.Component {
         duration
       }).start()
     }
+    if (this.props.loading !== prevProps.loading || this.props.disabled !== prevProps.disabled) {
+      Animated.timing(this.shadowOpacity, {
+        toValue: this.props.loading || this.props.disabled ? 0 : 0.2,
+        duration: 100
+      }).start()
+    }
   }
 
-  render() {
-    const shadowStyles = {
+  @autobind
+  onPressIn() {
+    if (this.props.loading || this.props.disabled) return
+    this.setState({active: true})
+  }
+
+  @autobind
+  onPressOut() {
+    if (this.props.loading || this.props.disabled) return
+    this.setState({active: false})
+  }
+
+  @autobind
+  onPress() {
+    if (this.props.loading || this.props.disabled) return
+    this.props.onPress()
+  }
+
+  getContainerStyles() {
+    const backgroundColor =
+      this.props.loading || this.props.disabled ? '#eeeeee' : this.props.backgroundColor
+    return {
+      backgroundColor,
+      borderRadius: 4,
+      overflow: 'hidden',
+      height: 50
+    }
+  }
+
+  getShadowStyles() {
+    const shadowOpacity = this.shadowOpacity
+    return {
       shadowColor: '#000',
-      shadowOpacity: 0.2,
+      shadowOpacity,
       borderRadius: 4,
       marginTop: this.marginTop,
       marginBottom: this.marginBottom,
       shadowRadius: this.shadowRadius
     }
-    const containerStyles = {
-      backgroundColor: this.props.backgroundColor,
-      borderRadius: 4,
-      overflow: 'hidden',
-      shadowRadius: 10
-    }
-    const textStyles = {
+  }
+
+  getTextStyles() {
+    const color = this.props.disabled ? '#ddd' : this.props.textColor
+    return {
       textAlign: 'center',
-      padding: 15,
-      fontSize: 16,
-      color: this.props.textColor,
+      padding: 14,
+      fontSize: 18,
+      color,
       fontWeight: '600'
     }
+  }
+
+  renderLoading() {
+    if (!this.props.loading) return
+    const style = {
+      padding: 15,
+      height: 50
+    }
+    return (
+      <View style={style}>
+        <ActivityIndicator />
+      </View>
+    )
+  }
+
+  renderText() {
+    if (this.props.loading) return
+    const textStyles = this.getTextStyles()
+    return (
+      <Text style={textStyles}>
+        {this.props.title}
+      </Text>
+    )
+  }
+
+  render() {
+    const shadowStyles = this.getShadowStyles()
+    const containerStyles = this.getContainerStyles()
     return (
       <TouchableWithoutFeedback
-        onPressIn={() => this.setState({active: true})}
-        onPressOut={() => this.setState({active: false})}
-        onPress={this.props.onPress}
+        onPressIn={this.onPressIn}
+        onPressOut={this.onPressOut}
+        onPress={this.onPress}
         style={styles.touchable}
       >
         <Animated.View style={shadowStyles}>
           <View style={containerStyles}>
-            <Text style={textStyles}>
-              {this.props.title}
-            </Text>
+            {this.renderText()}
+            {this.renderLoading()}
           </View>
         </Animated.View>
       </TouchableWithoutFeedback>
