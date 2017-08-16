@@ -33,6 +33,7 @@ export default class Auth extends React.Component {
         <StatusBar backgroundColor="#0069ff" barStyle="dark-content" />
         <Main open={this.open} />
         <Modal
+          backButtonClose
           swipeToClose={false}
           keyboardTopOffset={0}
           style={this.getModalStyle()}
