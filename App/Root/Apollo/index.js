@@ -7,7 +7,7 @@ import Loading from './Loading'
 import NetworkError from './NetworkError'
 import ApolloError from './ApolloError'
 
-const uri = 'http://api.admin.orionsoft.io/graphql'
+const uri = 'http://api.weeshing.com/graphql'
 const networkInterface = createNetworkInterface({uri})
 
 networkInterface.use([

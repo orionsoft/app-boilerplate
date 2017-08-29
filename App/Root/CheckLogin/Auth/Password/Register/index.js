@@ -57,7 +57,7 @@ export default class Register extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Register</Text>
         <Form state={this.state} onChange={changes => this.setState(changes)}>
           <View>
             <Field
