@@ -10,10 +10,15 @@ import ApolloError from './ApolloError'
 const uri = 'http://api.weeshing.com/graphql'
 const networkInterface = createNetworkInterface({uri})
 
+const sleep = time => new Promise(resolve => setTimeout(resolve, time))
+const delay = 100
+
 networkInterface.use([
   {
     async applyMiddleware(request, next) {
       const currentUserToken = await getLoginToken()
+
+      await sleep(delay)
 
       if (!currentUserToken) {
         return next()

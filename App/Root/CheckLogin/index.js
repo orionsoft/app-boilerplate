@@ -6,14 +6,20 @@ import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
 import Modal from 'react-native-modalbox'
 import Auth from './Auth'
+import Loading from './Loading'
 
-@withGraphQL(gql`
-  query getMe {
-    me {
-      _id
+@withGraphQL(
+  gql`
+    query getMe {
+      me {
+        _id
+      }
     }
+  `,
+  {
+    loading: <Loading />
   }
-`)
+)
 export default class CheckLogin extends React.Component {
   static propTypes = {
     me: PropTypes.object,
@@ -28,8 +34,7 @@ export default class CheckLogin extends React.Component {
           swipeToClose={false}
           startOpen={!this.props.me}
           isOpen={!this.props.me}
-          position="bottom"
-        >
+          position="bottom">
           <Auth />
         </Modal>
       </View>

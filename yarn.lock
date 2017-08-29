@@ -4597,9 +4597,9 @@ raw-body@~2.2.0:
     iconv-lite "0.4.15"
     unpipe "1.0.0"
 
-react-apollo-decorators@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.npmjs.org/react-apollo-decorators/-/react-apollo-decorators-1.4.1.tgz#08cb3a28df4637726816d7ddd9bff05267bbaa08"
+react-apollo-decorators@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.npmjs.org/react-apollo-decorators/-/react-apollo-decorators-1.4.2.tgz#d7eddde0734d0c521cd401ab0c2ada1c17038fc1"
   dependencies:
     babel-runtime "^6.25.0"
     lodash "^4.17.4"
@@ -4646,6 +4646,12 @@ react-native-modalbox@^1.4.2:
   dependencies:
     create-react-class "^15.6.0"
     prop-types "^15.5.10"
+
+react-native-progress@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/react-native-progress/-/react-native-progress-3.4.0.tgz#c002e6efb2f0b82dd6889510e669c492da2718ac"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-native-safe-module@^1.1.0:
   version "1.2.0"
@@ -5895,13 +5901,13 @@ whatwg-encoding@^1.0.1:
   dependencies:
     iconv-lite "0.4.13"
 
-whatwg-fetch@>=0.10.0, whatwg-fetch@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-1.1.1.tgz#ac3c9d39f320c6dce5339969d054ef43dd333319"
-
-whatwg-fetch@^2.0.0:
+whatwg-fetch@>=0.10.0, whatwg-fetch@^2.0.0:
   version "2.0.3"
   resolved "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
+
+whatwg-fetch@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-1.1.1.tgz#ac3c9d39f320c6dce5339969d054ef43dd333319"
 
 whatwg-url@^4.3.0:
   version "4.8.0"

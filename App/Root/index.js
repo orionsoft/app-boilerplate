@@ -11,9 +11,7 @@ export default class Root extends React.Component {
   render() {
     return (
       <Apollo>
-        <CheckLogin>
-          {this.props.children}
-        </CheckLogin>
+        <CheckLogin>{this.props.children}</CheckLogin>
       </Apollo>
     )
   }
