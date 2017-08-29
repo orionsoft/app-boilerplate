@@ -13,5 +13,12 @@ export default StyleSheet.create({
   },
   register: {
     flex: 1
+  },
+  closeIcon: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    zIndex: 10,
+    backgroundColor: 'transparent'
   }
 })

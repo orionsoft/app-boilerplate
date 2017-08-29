@@ -39,8 +39,7 @@ export default class Auth extends React.Component {
           style={this.getModalStyle()}
           isOpen={this.state.opened === 'password'}
           onClosed={() => this.setState({opened: null})}
-          position="bottom"
-        >
+          position="bottom">
           <Password open={this.open} />
         </Modal>
       </View>

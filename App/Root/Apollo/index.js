@@ -7,7 +7,7 @@ import Loading from './Loading'
 import NetworkError from './NetworkError'
 import ApolloError from './ApolloError'
 
-const uri = 'https://api.weeshing.com/graphql'
+const uri = 'http://api.admin.orionsoft.io/graphql'
 const networkInterface = createNetworkInterface({uri})
 
 networkInterface.use([
@@ -48,10 +48,6 @@ export default class Apollo extends React.Component {
   }
 
   render() {
-    return (
-      <ApolloProvider client={client}>
-        {this.props.children}
-      </ApolloProvider>
-    )
+    return <ApolloProvider client={client}>{this.props.children}</ApolloProvider>
   }
 }

@@ -6,9 +6,13 @@ import Login from './Login'
 import Register from './Register'
 import Forgot from './Forgot'
 import autobind from 'autobind-decorator'
+import IconButton from 'App/components/IconButton'
+import PropTypes from 'prop-types'
 
 export default class Password extends React.Component {
-  static propTypes = {}
+  static propTypes = {
+    open: PropTypes.func
+  }
 
   state = {index: 1}
 
@@ -21,13 +25,18 @@ export default class Password extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <IconButton
+          onPress={() => this.props.open(null)}
+          name="close"
+          size={25}
+          style={styles.closeIcon}
+        />
         <Swiper
           ref="swiper"
           loop={false}
           index={this.state.index}
           onIndexChanged={index => this.setState({index})}
-          style={styles.wrapper}
-        >
+          style={styles.wrapper}>
           <View style={styles.forgot}>
             <Forgot open={this.open} />
           </View>
