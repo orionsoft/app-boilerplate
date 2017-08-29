@@ -6,7 +6,7 @@ import autobind from 'autobind-decorator'
 
 export default class IconButton extends React.Component {
   static propTypes = {
-    style: PropTypes.object,
+    style: PropTypes.any,
     name: PropTypes.string,
     size: PropTypes.number,
     onPress: PropTypes.func,

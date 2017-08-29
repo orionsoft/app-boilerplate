@@ -9,5 +9,10 @@ export default StyleSheet.create({
   title: {
     ...texts.title,
     marginBottom: 40
+  },
+  errorMessage: {
+    color: 'red',
+    marginBottom: 10,
+    fontSize: 16
   }
 })
