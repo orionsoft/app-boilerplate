@@ -8,10 +8,6 @@ export default class StatusBarBackground extends React.Component {
 
   render() {
     if (Platform.OS !== 'ios') return <View />
-    return (
-      <BlurView style={styles.container}>
-        <View />
-      </BlurView>
-    )
+    return <BlurView intensity={60} style={styles.container} />
   }
 }

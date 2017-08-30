@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 import Modal from 'react-native-modalbox'
 import Auth from './Auth'
 import Loading from './Loading'
-import StatusBarBackground from './StatusBarBackground'
 
 @withGraphQL(
   gql`
@@ -30,7 +29,6 @@ export default class CheckLogin extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBarBackground />
         {this.props.children}
         <Modal
           swipeToClose={false}

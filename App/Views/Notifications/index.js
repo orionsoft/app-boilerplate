@@ -7,7 +7,7 @@ export default class Notifications extends React.Component {
   static propTypes = {}
 
   static navigationOptions = {
-    tabBarIcon: ({tintColor}) => <Icon size={25} color={tintColor} name="earth" />
+    tabBarIcon: ({tintColor}) => <Icon size={30} color={tintColor} name="earth" />
   }
 
   render() {
