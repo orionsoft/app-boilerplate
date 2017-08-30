@@ -1,20 +1,29 @@
 import React from 'react'
-import {View, TouchableWithoutFeedback, Text, ActivityIndicator} from 'react-native'
+import {View, TouchableWithoutFeedback, Text} from 'react-native'
 import styles from './styles.js'
 import PropTypes from 'prop-types'
 import autobind from 'autobind-decorator'
+import {Circle} from 'react-native-progress'
 
 export default class AppButton extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     textColor: PropTypes.string,
+    fontSize: PropTypes.number,
     onPress: PropTypes.func,
     disabled: PropTypes.bool,
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
+    height: PropTypes.number,
+    padding: PropTypes.number,
+    loadingColor: PropTypes.string
   }
 
   static defaultProps = {
-    textColor: '#111'
+    textColor: '#111',
+    height: 40,
+    fontSize: 18,
+    padding: 15,
+    loadingColor: '#111'
   }
 
   state = {}
@@ -39,7 +48,9 @@ export default class AppButton extends React.Component {
 
   getContainerStyles() {
     return {
-      height: 40
+      height: this.props.height,
+      alignItems: 'center',
+      justifyContent: 'center'
     }
   }
 
@@ -48,8 +59,8 @@ export default class AppButton extends React.Component {
     const opacity = this.state.active ? 0.5 : 1
     return {
       textAlign: 'center',
-      padding: 15,
-      fontSize: 18,
+      padding: this.props.padding,
+      fontSize: this.props.fontSize,
       color,
       opacity
     }
@@ -57,13 +68,10 @@ export default class AppButton extends React.Component {
 
   renderLoading() {
     if (!this.props.loading) return
-    const style = {
-      padding: 15,
-      height: 40
-    }
+    const style = {}
     return (
       <View style={style}>
-        <ActivityIndicator />
+        <Circle size={this.props.height} indeterminate color={this.props.loadingColor} />
       </View>
     )
   }
@@ -71,11 +79,7 @@ export default class AppButton extends React.Component {
   renderText() {
     if (this.props.loading) return
     const textStyles = this.getTextStyles()
-    return (
-      <Text style={textStyles}>
-        {this.props.title}
-      </Text>
-    )
+    return <Text style={textStyles}>{this.props.title}</Text>
   }
 
   render() {
@@ -85,8 +89,7 @@ export default class AppButton extends React.Component {
         onPressIn={this.onPressIn}
         onPressOut={this.onPressOut}
         onPress={this.onPress}
-        style={styles.touchable}
-      >
+        style={styles.touchable}>
         <View style={containerStyles}>
           {this.renderText()}
           {this.renderLoading()}

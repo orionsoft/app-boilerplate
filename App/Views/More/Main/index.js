@@ -19,11 +19,13 @@ export default class More extends React.Component {
     return (
       <View style={styles.options}>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Profile')}
+          onPress={() => this.props.navigation.navigate('EditProfile')}
           style={[styles.option, styles.optionNonLast]}>
           <Text style={styles.optionText}>Edit profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.option}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('ChangePassword')}
+          style={styles.option}>
           <Text style={styles.optionText}>Change password</Text>
         </TouchableOpacity>
       </View>
