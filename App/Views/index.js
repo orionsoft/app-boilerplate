@@ -1,23 +1,20 @@
-import React from 'react'
-import {View, Text, Button} from 'react-native'
-import styles from './styles.js'
-import PropTypes from 'prop-types'
-import {logout} from 'meteor-apollo-accounts'
-import {withApollo} from 'react-apollo'
+import {TabNavigator} from 'react-navigation'
+import Home from './Home'
+import Notifications from './Notifications'
+import More from './More'
 
-@withApollo
-export default class Views extends React.Component {
-  static propTypes = {
-    client: PropTypes.object,
-    me: PropTypes.object
-  }
+export default TabNavigator(
+  {
+    Main: {screen: Home},
+    Setup: {screen: Notifications},
+    More: {screen: More}
+  },
+  {
+    swipeEnabled: true,
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Views</Text>
-        <Button onPress={() => logout(this.props.client)} title="Logout" />
-      </View>
-    )
+    tabBarOptions: {
+      activeTintColor: '#0069ff',
+      showLabel: false
+    }
   }
-}
+)
