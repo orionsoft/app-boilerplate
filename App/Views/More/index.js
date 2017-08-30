@@ -1,26 +1,21 @@
 import React from 'react'
-import {ScrollView, Text, View} from 'react-native'
-import styles from './styles.js'
+import {StackNavigator} from 'react-navigation'
 import Icon from 'App/components/Icon'
-import Account from './Account'
-import Logout from './Logout'
+import Profile from './Profile'
+import Main from './Main'
 
-export default class More extends React.Component {
-  static propTypes = {}
-
-  static navigationOptions = {
-    tabBarIcon: ({tintColor}) => <Icon size={30} color={tintColor} name="menu" />
+const navigator = StackNavigator(
+  {
+    Main: {screen: Main},
+    Profile: {screen: Profile}
+  },
+  {
+    headerMode: 'screen'
   }
+)
 
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Account</Text>
-        </View>
-        <Account />
-        <Logout />
-      </ScrollView>
-    )
-  }
+navigator.navigationOptions = {
+  tabBarIcon: ({tintColor}) => <Icon size={30} color={tintColor} name="menu" />
 }
+
+export default navigator

@@ -14,7 +14,6 @@ export default class Logout extends React.Component {
 
   @autobind
   async logout() {
-    console.log('lotoug')
     try {
       await logout(this.props.client)
     } catch (error) {

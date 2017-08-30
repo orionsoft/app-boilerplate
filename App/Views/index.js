@@ -10,8 +10,6 @@ export default TabNavigator(
     More: {screen: More}
   },
   {
-    swipeEnabled: true,
-
     tabBarOptions: {
       activeTintColor: '#0069ff',
       showLabel: false
