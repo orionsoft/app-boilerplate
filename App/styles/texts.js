@@ -1,6 +1,6 @@
 export default {
   title: {
-    fontSize: 26,
-    fontWeight: '900'
+    fontSize: 36,
+    fontWeight: '800'
   }
 }

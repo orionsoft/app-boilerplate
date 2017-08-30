@@ -1,0 +1,5 @@
+{
+  "request": {
+    "url": "http://api.weeshing.com/graphql"
+  }
+}

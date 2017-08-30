@@ -1,7 +1,8 @@
 import React from 'react'
-import {ScrollView, Text} from 'react-native'
+import {ScrollView, Text, View} from 'react-native'
 import styles from './styles.js'
 import Icon from 'App/components/Icon'
+import Account from './Account'
 
 export default class More extends React.Component {
   static propTypes = {}
@@ -13,7 +14,10 @@ export default class More extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text>More</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Account</Text>
+        </View>
+        <Account />
       </ScrollView>
     )
   }

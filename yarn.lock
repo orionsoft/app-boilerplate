@@ -4607,9 +4607,9 @@ raw-body@~2.2.0:
     iconv-lite "0.4.15"
     unpipe "1.0.0"
 
-react-apollo-decorators@^1.4.2:
-  version "1.4.2"
-  resolved "https://registry.npmjs.org/react-apollo-decorators/-/react-apollo-decorators-1.4.2.tgz#d7eddde0734d0c521cd401ab0c2ada1c17038fc1"
+react-apollo-decorators@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.npmjs.org/react-apollo-decorators/-/react-apollo-decorators-1.4.3.tgz#889b25ad30c1e85ef794e917e6ead961098f6c2c"
   dependencies:
     babel-runtime "^6.25.0"
     lodash "^4.17.4"
