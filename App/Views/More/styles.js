@@ -3,10 +3,7 @@ import texts from 'App/styles/texts'
 
 export default StyleSheet.create({
   container: {},
-  titleContainer: {
-    padding: 10,
-    marginTop: 10
-  },
+  titleContainer: texts.titleContainer,
   title: {
     ...texts.title,
     marginBottom: 0

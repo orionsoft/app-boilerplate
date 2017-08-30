@@ -3,6 +3,7 @@ import {ScrollView, Text, View} from 'react-native'
 import styles from './styles.js'
 import Icon from 'App/components/Icon'
 import Account from './Account'
+import Logout from './Logout'
 
 export default class More extends React.Component {
   static propTypes = {}
@@ -18,6 +19,7 @@ export default class More extends React.Component {
           <Text style={styles.title}>Account</Text>
         </View>
         <Account />
+        <Logout />
       </ScrollView>
     )
   }
