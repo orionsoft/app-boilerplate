@@ -4,6 +4,7 @@ import styles from './styles.js'
 import headerStyle from 'App/styles/headerStyle'
 import {Form, Field} from 'simple-react-form'
 import TableTextInput from 'App/components/fields/TableTextInput'
+import TableDateInput from 'App/components/fields/TableDateInput'
 import TableButton from 'App/components/TableButton'
 import withMutation from 'react-apollo-decorators/lib/withMutation'
 import gql from 'graphql-tag'
@@ -17,6 +18,8 @@ const fragment = gql`
     _id
     profile {
       name
+      mobilePhone
+      birthday
     }
   }
 `
@@ -31,16 +34,11 @@ const fragment = gql`
     ...editProfile
   }
 } ${fragment}`)
-export default class Profile extends React.Component {
+class Profile extends React.Component {
   static propTypes = {
     setUserProfile: PropTypes.func,
     me: PropTypes.object,
     navigation: PropTypes.object
-  }
-
-  static navigationOptions = {
-    title: 'Edit profile',
-    headerStyle
   }
 
   state = {}
@@ -69,7 +67,16 @@ export default class Profile extends React.Component {
           onSubmit={this.save}
           ref="form">
           <View>
-            <Field fieldName="name" label="Name" type={TableTextInput} />
+            <Field bottom fieldName="name" label="Name" type={TableTextInput} />
+            <Field
+              bottom
+              fieldName="birthday"
+              label="Birthday"
+              maximumDate={new Date()}
+              type={TableDateInput}
+            />
+            <View style={styles.separation} />
+            <Field bottom fieldName="mobilePhone" label="Mobile phone" type={TableTextInput} />
             <View style={styles.separation} />
             <TableButton
               loading={this.state.loading}
@@ -82,3 +89,10 @@ export default class Profile extends React.Component {
     )
   }
 }
+
+Profile.navigationOptions = {
+  title: 'Edit profile',
+  headerStyle
+}
+
+export default Profile
