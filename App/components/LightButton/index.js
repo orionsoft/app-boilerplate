@@ -14,7 +14,6 @@ export default class AppButton extends React.Component {
     disabled: PropTypes.bool,
     loading: PropTypes.bool,
     height: PropTypes.number,
-    padding: PropTypes.number,
     loadingColor: PropTypes.string
   }
 
@@ -22,7 +21,6 @@ export default class AppButton extends React.Component {
     textColor: '#111',
     height: 40,
     fontSize: 18,
-    padding: 15,
     loadingColor: '#111'
   }
 
@@ -59,7 +57,6 @@ export default class AppButton extends React.Component {
     const opacity = this.state.active ? 0.5 : 1
     return {
       textAlign: 'center',
-      padding: this.props.padding,
       fontSize: this.props.fontSize,
       color,
       opacity

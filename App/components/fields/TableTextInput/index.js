@@ -10,7 +10,8 @@ export default class TableTextInput extends React.Component {
     value: PropTypes.string,
     label: PropTypes.string,
     passProps: PropTypes.object,
-    bottom: PropTypes.bool
+    bottom: PropTypes.bool,
+    errorMessage: PropTypes.string
   }
 
   static defaultProps = {
@@ -25,6 +26,11 @@ export default class TableTextInput extends React.Component {
   renderBottom() {
     if (this.props.bottom) return
     return <View style={styles.bottomLine} />
+  }
+
+  renderErrorMessage() {
+    if (!this.props.errorMessage) return
+    return <Text style={styles.errorMessage}>{this.props.errorMessage}</Text>
   }
 
   render() {
@@ -47,6 +53,7 @@ export default class TableTextInput extends React.Component {
             />
           </View>
         </TouchableWithoutFeedback>
+        {this.renderErrorMessage()}
         {this.renderBottom()}
       </View>
     )

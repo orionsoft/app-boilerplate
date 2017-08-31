@@ -22,6 +22,9 @@ export default StyleSheet.create({
     borderBottomColor: '#eee'
   },
   optionText: {
-    fontSize: 16
+    fontSize: 18
+  },
+  separation: {
+    height: 20
   }
 })

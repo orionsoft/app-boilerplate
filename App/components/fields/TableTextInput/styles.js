@@ -15,17 +15,24 @@ export default StyleSheet.create({
   },
   label: {
     color: '#111',
-    fontSize: 16
+    fontSize: 18
   },
   input: {
     color: '#888',
     flex: 1,
-    textAlign: 'right'
+    textAlign: 'right',
+    fontSize: 18
   },
   bottomLine: {
     backgroundColor: '#eee',
     width: '100%',
     height: 1,
     marginLeft: 10
+  },
+  errorMessage: {
+    padding: 10,
+    paddingTop: 0,
+    color: 'red',
+    textAlign: 'right'
   }
 })

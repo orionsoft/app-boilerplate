@@ -9,7 +9,7 @@ export default class TableButton extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <LightButton height={20} fontSize={16} padding={10} loadingColor="#111" {...this.props} />
+        <LightButton height={24} fontSize={18} loadingColor="#111" {...this.props} />
       </View>
     )
   }

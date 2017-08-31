@@ -2,17 +2,35 @@ import React from 'react'
 import {ScrollView, Text, View, TouchableOpacity} from 'react-native'
 import styles from './styles.js'
 import Account from '../Account'
-import Logout from './Logout'
 import PropTypes from 'prop-types'
+import {logout} from 'meteor-apollo-accounts'
+import {withApollo} from 'react-apollo'
+import autobind from 'autobind-decorator'
+import TableButton from 'App/components/TableButton'
 
+@withApollo
 export default class More extends React.Component {
   static propTypes = {
+    client: PropTypes.object,
     navigation: PropTypes.object
   }
 
   static navigationOptions = {
     title: 'Account',
     header: null
+  }
+
+  state = {}
+
+  @autobind
+  async logout() {
+    this.setState({loggingOut: true})
+    try {
+      await logout(this.props.client)
+    } catch (error) {
+      console.log('error', error)
+    }
+    this.setState({loggingOut: false})
   }
 
   renderOptions() {
@@ -40,7 +58,8 @@ export default class More extends React.Component {
         </View>
         <Account />
         {this.renderOptions()}
-        <Logout />
+        <View style={styles.separation} />
+        <TableButton title="Logout" onPress={this.logout} loading={this.state.loggingOut} />
       </ScrollView>
     )
   }
