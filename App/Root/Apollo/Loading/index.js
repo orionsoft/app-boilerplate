@@ -1,6 +1,7 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View} from 'react-native'
 import styles from './styles.js'
+import {Circle} from 'react-native-progress'
 
 export default class Loading extends React.Component {
   static propTypes = {}
@@ -8,7 +9,7 @@ export default class Loading extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Global loading...</Text>
+        <Circle size={40} indeterminate color="#0069ff" />
       </View>
     )
   }

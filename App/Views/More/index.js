@@ -7,12 +7,13 @@ import Main from './Main'
 
 const navigator = StackNavigator(
   {
-    Main: {screen: Main},
+    MoreMain: {screen: Main},
     EditProfile: {screen: EditProfile},
     ChangePassword: {screen: ChangePassword}
   },
   {
-    headerMode: 'screen'
+    headerMode: 'screen',
+    initialRoute: 'Main'
   }
 )
 

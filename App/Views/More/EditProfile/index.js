@@ -19,9 +19,11 @@ const fragment = gql`
     _id
     profile {
       name
+      gender
       mobilePhone
       birthday
       investmentRange
+      type
     }
   }
 `
@@ -31,6 +33,14 @@ const fragment = gql`
     ...editProfile
   }
   investmentRanges: fieldOptions (data: "investmentRange") {
+    label
+    value
+  }
+  genders: fieldOptions (data: "gender") {
+    label
+    value
+  }
+  userTypes: fieldOptions (data: "userType") {
     label
     value
   }
@@ -45,7 +55,9 @@ class Profile extends React.Component {
     setUserProfile: PropTypes.func,
     me: PropTypes.object,
     navigation: PropTypes.object,
-    investmentRanges: PropTypes.array
+    investmentRanges: PropTypes.array,
+    genders: PropTypes.array,
+    userTypes: PropTypes.array
   }
 
   state = {}
@@ -76,21 +88,33 @@ class Profile extends React.Component {
           <View>
             <Field bottom fieldName="name" label="Name" type={TableTextInput} />
             <Field
-              bottom
               fieldName="birthday"
               label="Birthday"
               maximumDate={new Date()}
               type={TableDateInput}
             />
+            <Field
+              bottom
+              fieldName="gender"
+              label="Gender"
+              type={TableSelect}
+              options={this.props.genders}
+            />
             <View style={styles.separation} />
             <Field bottom fieldName="mobilePhone" label="Mobile phone" type={TableTextInput} />
             <View style={styles.separation} />
             <Field
-              bottom
               fieldName="investmentRange"
               label="Investment ranges"
               type={TableSelect}
               options={this.props.investmentRanges}
+            />
+            <Field
+              bottom
+              fieldName="type"
+              label="User type"
+              type={TableSelect}
+              options={this.props.userTypes}
             />
             <View style={styles.separation} />
             <TableButton
