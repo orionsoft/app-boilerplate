@@ -7,6 +7,7 @@ import {logout} from 'meteor-apollo-accounts'
 import {withApollo} from 'react-apollo'
 import autobind from 'autobind-decorator'
 import TableButton from 'App/components/TableButton'
+import Countries from './Countries'
 
 @withApollo
 export default class More extends React.Component {
@@ -58,6 +59,8 @@ export default class More extends React.Component {
         </View>
         <Account />
         {this.renderOptions()}
+        <View style={styles.separation} />
+        <Countries navigation={this.props.navigation} />
         <View style={styles.separation} />
         <TableButton title="Logout" onPress={this.logout} loading={this.state.loggingOut} />
       </ScrollView>
