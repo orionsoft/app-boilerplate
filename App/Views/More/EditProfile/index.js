@@ -5,6 +5,7 @@ import headerStyle from 'App/styles/headerStyle'
 import {Form, Field} from 'simple-react-form'
 import TableTextInput from 'App/components/fields/TableTextInput'
 import TableDateInput from 'App/components/fields/TableDateInput'
+import TableSelect from 'App/components/fields/TableSelect'
 import TableButton from 'App/components/TableButton'
 import withMutation from 'react-apollo-decorators/lib/withMutation'
 import gql from 'graphql-tag'
@@ -20,6 +21,7 @@ const fragment = gql`
       name
       mobilePhone
       birthday
+      investmentRange
     }
   }
 `
@@ -27,6 +29,10 @@ const fragment = gql`
 @withGraphQL(gql`query getMyProfile {
   me {
     ...editProfile
+  }
+  investmentRanges: fieldOptions (data: "investmentRange") {
+    label
+    value
   }
 } ${fragment}`)
 @withMutation(gql`mutation setUserProfile ($userId: ID!, $profile: UpdateUserProfileInput!) {
@@ -38,7 +44,8 @@ class Profile extends React.Component {
   static propTypes = {
     setUserProfile: PropTypes.func,
     me: PropTypes.object,
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+    investmentRanges: PropTypes.array
   }
 
   state = {}
@@ -77,6 +84,14 @@ class Profile extends React.Component {
             />
             <View style={styles.separation} />
             <Field bottom fieldName="mobilePhone" label="Mobile phone" type={TableTextInput} />
+            <View style={styles.separation} />
+            <Field
+              bottom
+              fieldName="investmentRange"
+              label="Investment ranges"
+              type={TableSelect}
+              options={this.props.investmentRanges}
+            />
             <View style={styles.separation} />
             <TableButton
               loading={this.state.loading}
