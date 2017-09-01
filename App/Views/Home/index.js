@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {ScrollView, View, Text} from 'react-native'
 import styles from './styles.js'
 import Icon from 'App/components/Icon'
 
@@ -12,9 +12,11 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Home</Text>
-      </View>
+      <ScrollView style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Home</Text>
+        </View>
+      </ScrollView>
     )
   }
 }
