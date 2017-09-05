@@ -23,6 +23,7 @@ export default class Countries extends React.Component {
   }
 
   renderCountries() {
+    if (!this.props.me.profile) return <View />
     const countryFields = this.props.me.profile.countryFields || {}
     const codes = keys(countryFields)
     return codes.map(code => {

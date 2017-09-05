@@ -1,6 +1,16 @@
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
+  modal: {
+    flexDirection: 'column'
+  },
+  selectLabel: {
+    padding: 10
+  },
+  selectLabelText: {
+    fontSize: 20,
+    fontWeight: '700'
+  },
   item: {},
   itemLabel: {
     fontSize: 18,

@@ -7,7 +7,7 @@ import Loading from './Loading'
 import NetworkError from './NetworkError'
 import ApolloError from './ApolloError'
 
-const uri = 'http://api.weeshing.com/graphql'
+const uri = 'http://api.beta.weeshing.com/graphql'
 const networkInterface = createNetworkInterface({uri})
 
 const sleep = time => new Promise(resolve => setTimeout(resolve, time))

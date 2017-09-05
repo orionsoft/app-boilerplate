@@ -103,7 +103,12 @@ export default class TableSelect extends React.Component {
           isOpen={this.state.open}
           onClosed={() => this.setState({open: false})}
           position="bottom">
-          <ScrollView>{this.renderOptions()}</ScrollView>
+          <View style={{flex: 1}}>
+            <View style={styles.selectLabel}>
+              <Text style={styles.selectLabelText}>{this.props.label}</Text>
+            </View>
+            <ScrollView style={styles.modalScrollView}>{this.renderOptions()}</ScrollView>
+          </View>
         </Modal>
       </View>
     )
