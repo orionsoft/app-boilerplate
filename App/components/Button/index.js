@@ -11,12 +11,18 @@ export default class AppButton extends React.Component {
     textColor: PropTypes.string,
     onPress: PropTypes.func,
     disabled: PropTypes.bool,
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
+    containerStyle: PropTypes.any,
+    buttonStyle: PropTypes.any,
+    textStyle: PropTypes.any
   }
 
   static defaultProps = {
     backgroundColor: '#0069ff',
-    textColor: '#ffffff'
+    textColor: '#ffffff',
+    containerStyle: {},
+    buttonStyle: {},
+    textStyle: {}
   }
 
   state = {}
@@ -71,35 +77,44 @@ export default class AppButton extends React.Component {
   getContainerStyles() {
     const backgroundColor =
       this.props.loading || this.props.disabled ? '#eeeeee' : this.props.backgroundColor
-    return {
-      backgroundColor,
-      borderRadius: 4,
-      overflow: 'hidden',
-      height: 50
-    }
+    return [
+      {
+        backgroundColor,
+        borderRadius: 4,
+        overflow: 'hidden',
+        height: 50
+      },
+      this.props.buttonStyle
+    ]
   }
 
   getShadowStyles() {
     const shadowOpacity = this.shadowOpacity
-    return {
-      shadowColor: '#000',
-      shadowOpacity,
-      borderRadius: 4,
-      marginTop: this.marginTop,
-      marginBottom: this.marginBottom,
-      shadowRadius: this.shadowRadius
-    }
+    return [
+      {
+        shadowColor: '#000',
+        shadowOpacity,
+        borderRadius: 4,
+        marginTop: this.marginTop,
+        marginBottom: this.marginBottom,
+        shadowRadius: this.shadowRadius
+      },
+      this.props.containerStyle
+    ]
   }
 
   getTextStyles() {
     const color = this.props.disabled ? '#ddd' : this.props.textColor
-    return {
-      textAlign: 'center',
-      padding: 14,
-      fontSize: 18,
-      color,
-      fontWeight: '600'
-    }
+    return [
+      {
+        textAlign: 'center',
+        padding: 14,
+        fontSize: 18,
+        color,
+        fontWeight: '600'
+      },
+      this.props.textStyle
+    ]
   }
 
   renderLoading() {
@@ -118,11 +133,7 @@ export default class AppButton extends React.Component {
   renderText() {
     if (this.props.loading) return
     const textStyles = this.getTextStyles()
-    return (
-      <Text style={textStyles}>
-        {this.props.title}
-      </Text>
-    )
+    return <Text style={textStyles}>{this.props.title}</Text>
   }
 
   render() {
@@ -133,8 +144,7 @@ export default class AppButton extends React.Component {
         onPressIn={this.onPressIn}
         onPressOut={this.onPressOut}
         onPress={this.onPress}
-        style={styles.touchable}
-      >
+        style={styles.touchable}>
         <Animated.View style={shadowStyles}>
           <View style={containerStyles}>
             {this.renderText()}
